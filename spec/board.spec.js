@@ -29,9 +29,27 @@ describe('Board', function() {
       expect(testBoard.checkRows()).toEqual(true);
       testBoard.state = [[null, null, null], [null, null, null], ["O", "O", "O"]];
       expect(testBoard.checkRows()).toEqual(true);
-      
+
 
     });
 
+  });
+
+  describe('checkColumns', function() {
+    it ('checks the columns on the board for a win', function() {
+      expect(testBoard.checkColumns()).toEqual(false);
+
+      testBoard.state = [["X", null, null], ["X", null, null], ["X", null, null]];
+      expect(testBoard.checkColumns()).toEqual(true);
+
+      testBoard.state = [[null, "O", null], [null, "O", null], [null, "O", null]];
+      expect(testBoard.checkColumns()).toEqual(true);
+
+      testBoard.state = [[null, null, "X"], [null, null, "X"], [null, null, "X"]];
+      expect(testBoard.checkColumns()).toEqual(true);
+
+      testBoard.state = [["X", null, null], ["O", null, null], ["X", null, null]];
+      expect(testBoard.checkColumns()).toEqual(false);
+    });
   });
 });
