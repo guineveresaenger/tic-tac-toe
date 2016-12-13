@@ -24,6 +24,7 @@ describe('Board', function() {
 
   describe("checkDiags", function() {
     it('checks the diagnals on the board for a win', function(){
+      testBoard.state = [[null, null, null], [null, null, null], [null, null, null]];
       expect(testBoard.checkDiags()).toEqual(false);
       testBoard.state = [['X', null, null], [null, 'X', null], [null, null, 'X']];
       expect(testBoard.checkDiags()).toEqual(true);
@@ -36,6 +37,7 @@ describe('Board', function() {
 
   describe('checkColumns', function() {
     it ('checks the columns on the board for a win', function() {
+      testBoard.state = [[null, null, null], [null, null, null], [null, null, null]];
       expect(testBoard.checkColumns()).toEqual(false);
 
       testBoard.state = [["X", null, null], ["X", null, null], ["X", null, null]];
@@ -55,6 +57,7 @@ describe('Board', function() {
 
   describe('checkWin', function() {
     it ('checks the state of the board for a win', function() {
+      testBoard.state = [[null, null, null], [null, null, null], [null, null, null]];
       expect(testBoard.checkWin()).toEqual(false);
 
       testBoard.state = [['X', 'X', 'X'], [null, null, null], [null, null, null]];
@@ -73,7 +76,31 @@ describe('Board', function() {
       ];
       expect(testBoard.checkWin()).toEqual(false);
     });
-
   });
+
+  describe('isAvailable', function() {
+    it('checks the space to see if available', function() {
+      testBoard.state = [[null, null, null], [null, null, null], [null, null, null]];
+      expect(testBoard.isAvailable(0, 1)).toEqual(true);
+
+      testBoard.state = [[null, "X", null], [null, null, null], [null, null, null]];
+      expect(testBoard.isAvailable(0, 1)).toEqual(false);
+    });
+  });
+
+  describe('setMarker', function() {
+    it('should set the given space of the board state', function() {
+      testBoard.state = [[null, null, null], [null, null, null], [null, null, null]];
+      testBoard.setMarker(0, 1, "X");
+      expect(testBoard.state).toEqual([[null, "X", null], [null, null, null], [null, null, null]]);
+      expect(testBoard.setMarker(0, 2, "X")).toEqual(true);
+      expect(testBoard.setMarker(0, 1, "X")).toEqual(false);
+    });
+
+    it('doesn\'t set marker if already taken', function() {
+      expect(testBoard.setMarker(0, 1, "X")).toEqual(false);
+    });
+  });
+
 
 });

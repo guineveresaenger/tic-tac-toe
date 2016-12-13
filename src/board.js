@@ -34,11 +34,11 @@ Board.prototype.checkColumns = function() {
   var indexTwoCounter = 0;
 
   for(var i = 0; i < this.state.length; i++) {
-    if (this.state[i][0] == indexZero) {
+    if (this.state[i][0] == indexZero && indexZero !== null) {
       indexZeroCounter ++;
-    } else if (this.state[i][1] == indexOne) {
+    } else if (this.state[i][1] == indexOne && indexOne !== null) {
       indexOneCounter ++;
-    } else if (this.state[i][2] == indexTwo) {
+    } else if (this.state[i][2] == indexTwo && indexTwo !== null) {
       indexTwoCounter ++;
     }
   }
@@ -85,6 +85,23 @@ Board.prototype.checkDiags = function() {
 
 Board.prototype.checkWin = function() {
   if (this.checkRows() || this.checkColumns() || this.checkDiags()) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Board.prototype.isAvailable = function(i, j) {
+  if (this.state[i][j] === null) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Board.prototype.setMarker = function(i, j, marker) {
+  if (this.isAvailable(i, j)) {
+    this.state[i][j] = marker;
     return true;
   } else {
     return false;
