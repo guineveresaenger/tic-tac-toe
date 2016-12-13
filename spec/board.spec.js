@@ -6,18 +6,8 @@ describe('Board', function() {
     it ("should instantiate a two-dimensional array full of null values", function(){
       expect(testBoard.state).toEqual([[null, null, null], [null, null, null], [null, null, null]]);
     });
-    it ("has a winning condition of false", function() {
-      expect(testBoard.win).toEqual(false);
-    });
     it ('should be an array', function() {
       expect(testBoard.state instanceof(Array)).toEqual(true);
-    });
-
-  });
-
-  xdescribe('checkWin', function() {
-    it ('checks the state of the board for a win', function() {
-
     });
 
   });
@@ -61,4 +51,29 @@ describe('Board', function() {
       expect(testBoard.checkColumns()).toEqual(false);
     });
   });
+
+
+  describe('checkWin', function() {
+    it ('checks the state of the board for a win', function() {
+      expect(testBoard.checkWin()).toEqual(false);
+
+      testBoard.state = [['X', 'X', 'X'], [null, null, null], [null, null, null]];
+      expect(testBoard.checkWin()).toEqual(true);
+
+      testBoard.state = [['X', null, null], [null, 'X', null], [null, null, 'X']];
+      expect(testBoard.checkWin()).toEqual(true);
+
+      testBoard.state = [[null, null, "X"], [null, null, "X"], [null, null, "X"]];
+      expect(testBoard.checkWin()).toEqual(true);
+
+      testBoard.state = [
+        ["X", "O", "X"],
+        ["X", "O", "X"],
+        ["O", "X", "O"]
+      ];
+      expect(testBoard.checkWin()).toEqual(false);
+    });
+
+  });
+
 });

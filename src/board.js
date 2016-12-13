@@ -1,9 +1,5 @@
 var Board = function() {
   this.state = [[null, null, null], [null, null, null], [null, null, null]];
-  this.win = false;
-
-
-
 };
 
 Board.prototype.checkRows = function() {
@@ -85,6 +81,14 @@ Board.prototype.checkDiags = function() {
     return true;
   }
   return false;
+};
+
+Board.prototype.checkWin = function() {
+  if (this.checkRows() || this.checkColumns() || this.checkDiags()) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 
