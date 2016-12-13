@@ -29,11 +29,6 @@ describe('Board', function() {
       expect(testBoard.checkRows()).toEqual(true);
       testBoard.state = [[null, null, null], [null, null, null], ["O", "O", "O"]];
       expect(testBoard.checkRows()).toEqual(true);
-<<<<<<< HEAD
-
-
-=======
->>>>>>> e6197ff6d60214221c89b6eb66f74ed151194a3d
     });
   });
 
