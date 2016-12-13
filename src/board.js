@@ -54,4 +54,38 @@ Board.prototype.checkColumns = function() {
   return false;
 };
 
+Board.prototype.checkDiags = function() {
+  var i = 0;
+  var j = 0;
+  var checkMark = this.state[i][j];
+  var counter = 0;
+  while(i < this.state.length) {
+    if (this.state[i][j] == checkMark && checkMark !== null){
+      counter++;
+    }
+    i++;
+    j++;
+  }
+  if (counter == 3) {
+    return true;
+  }
+  // re-set for other loop
+  i = 0;
+  j = 2;
+  checkMark = this.state[i][j];
+  counter = 0;
+  while(i < this.state.length) {
+    if (this.state[i][j] == checkMark && checkMark !== null){
+      counter++;
+    }
+    i++;
+    j--;
+  }
+  if (counter == 3) {
+    return true;
+  }
+  return false;
+};
+
+
 export default Board;

@@ -29,10 +29,24 @@ describe('Board', function() {
       expect(testBoard.checkRows()).toEqual(true);
       testBoard.state = [[null, null, null], [null, null, null], ["O", "O", "O"]];
       expect(testBoard.checkRows()).toEqual(true);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e6197ff6d60214221c89b6eb66f74ed151194a3d
     });
+  });
 
+  describe("checkDiags", function() {
+    it('checks the diagnals on the board for a win', function(){
+      expect(testBoard.checkDiags()).toEqual(false);
+      testBoard.state = [['X', null, null], [null, 'X', null], [null, null, 'X']];
+      expect(testBoard.checkDiags()).toEqual(true);
+      testBoard.state = [[null, null, 'O'], [null, 'O', null], ['O', null, null]];
+      expect(testBoard.checkDiags()).toEqual(true);
+      testBoard.state = [['X', null, null], [null, 'O', null], [null, null, 'X']];
+      expect(testBoard.checkDiags()).toEqual(false);
+    });
   });
 
   describe('checkColumns', function() {
