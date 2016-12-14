@@ -100,12 +100,7 @@ Board.prototype.isAvailable = function(i, j) {
 };
 
 Board.prototype.setMarker = function(i, j, marker) {
-  if (this.isAvailable(i, j)) {
-    this.state[i][j] = marker;
-    return true;
-  } else {
-    return false;
-  }
+  this.state[i][j] = marker;
 };
 
 

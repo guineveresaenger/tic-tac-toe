@@ -93,12 +93,6 @@ describe('Board', function() {
       testBoard.state = [[null, null, null], [null, null, null], [null, null, null]];
       testBoard.setMarker(0, 1, "X");
       expect(testBoard.state).toEqual([[null, "X", null], [null, null, null], [null, null, null]]);
-      expect(testBoard.setMarker(0, 2, "X")).toEqual(true);
-      expect(testBoard.setMarker(0, 1, "X")).toEqual(false);
-    });
-
-    it('doesn\'t set marker if already taken', function() {
-      expect(testBoard.setMarker(0, 1, "X")).toEqual(false);
     });
   });
 
