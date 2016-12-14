@@ -1,5 +1,6 @@
 import Game from 'game';
 import Player from 'player';
+import Board from 'board';
 
 describe('Game', function() {
   var testGame = new Game();
@@ -20,5 +21,20 @@ describe('Game', function() {
       expect(testGame.currentPlayer).toEqual(testGame.playerOne);
     });
 
+    it ('has a board', function() {
+      expect(testGame.board instanceof(Board)).toEqual(true);
+    });
   });
+
+  describe('togglePlayer', function() {
+    it('toggles the current player', function() {
+      testGame.togglePlayer();
+      expect(testGame.currentPlayer).toEqual(testGame.playerTwo);
+    });
+    it('toggles again', function() {
+      testGame.togglePlayer();
+      expect(testGame.currentPlayer).toEqual(testGame.playerOne);
+    });
+  });
+
 });
