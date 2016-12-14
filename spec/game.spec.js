@@ -37,4 +37,24 @@ describe('Game', function() {
     });
   });
 
+  describe('setNames', function() {
+    it('sets player names', function() {
+      testGame.setNames("Player 1", "Player 2");
+      expect(testGame.playerOne.name).toEqual("Player 1");
+      expect(testGame.playerTwo.name).toEqual("Player 2");
+      expect(typeof(testGame.playerTwo.name)).toEqual('string');
+    });
+
+  });
+
+  describe('setMarks', function() {
+    it('sets player marks', function() {
+      testGame.setMarks();
+      expect(testGame.playerOne.mark).toEqual("X");
+      expect(testGame.playerTwo.mark).toEqual("O");
+      expect(typeof(testGame.playerTwo.mark)).toEqual('string');
+    });
+
+  });
+
 });

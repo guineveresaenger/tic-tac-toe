@@ -17,5 +17,15 @@ Game.prototype.togglePlayer = function() {
   }
 };
 
+Game.prototype.setNames = function(nameOne, nameTwo) {
+  this.playerOne.name = nameOne;
+  this.playerTwo.name = nameTwo;
+
+};
+
+Game.prototype.setMarks = function() {
+  this.playerOne.mark = "X";
+  this.playerTwo.mark = "O";
+};
 
 export default Game;
