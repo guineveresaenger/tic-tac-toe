@@ -11,7 +11,7 @@ Board.prototype.checkRows = function() {
         counter ++;
       }
     }
-    if (counter == 3) {
+    if (counter == this.state.length) {
       return true;
     }
   }
@@ -22,17 +22,17 @@ Board.prototype.checkRows = function() {
 Board.prototype.checkColumns = function() {
 
   var j = 0;
-  while(j < 3) {
+  while(j < this.state.length) {
     var i = 0;
     var checkMark = this.state[i][j];
     var counter = 0;
-    while(i < 3) {
+    while(i < this.state.length) {
       if (this.state[i][j] == checkMark && checkMark !== null){
         counter++;
       }
       i++;
     }
-    if (counter == 3) {
+    if (counter == this.state.length) {
       return true;
     }
     j++;
@@ -53,12 +53,12 @@ Board.prototype.checkDiags = function() {
     i++;
     j++;
   }
-  if (counter == 3) {
+  if (counter == this.state.length) {
     return true;
   }
   // re-set for other loop
   i = 0;
-  j = 2;
+  j = (this.state.length - 1);
   checkMark = this.state[i][j];
   counter = 0;
   while(i < this.state.length) {
@@ -68,7 +68,7 @@ Board.prototype.checkDiags = function() {
     i++;
     j--;
   }
-  if (counter == 3) {
+  if (counter == this.state.length) {
     return true;
   }
   return false;
