@@ -65,29 +65,27 @@ describe('Game', function() {
     wholeGame.setNames("Allison", "Guinevere");
 
     // Allison is Player 1 and plays in top left square.
-    wholeGame.board.setMarker(0,0, wholeGame.currentPlayer.mark);
+    wholeGame.board.makeMove(0,0, wholeGame.currentPlayer.mark);
     wholeGame.togglePlayer();
     wholeGame.turnCounter ++;
-    console.log("HI THIS IS THE CURRENT PLAYER" + wholeGame.currentPlayer.name);
-    console.log("HI THIS IS THE CURRENT PLAYER'S MARK " + wholeGame.currentPlayer.mark);
 
     // Guinevere plays top middle
-    wholeGame.board.setMarker(0,1, wholeGame.currentPlayer.mark);
+    wholeGame.board.makeMove(0,1, wholeGame.currentPlayer.mark);
     wholeGame.togglePlayer();
     wholeGame.turnCounter ++;
 
     // Allison plays middle left
-    wholeGame.board.setMarker(1,0, wholeGame.currentPlayer.mark);
+    wholeGame.board.makeMove(1,0, wholeGame.currentPlayer.mark);
     wholeGame.togglePlayer();
     wholeGame.turnCounter ++;
 
     // Guinevere plays middle middle
-    wholeGame.board.setMarker(1,1, wholeGame.currentPlayer.mark);
+    wholeGame.board.makeMove(1,1, wholeGame.currentPlayer.mark);
     wholeGame.togglePlayer();
     wholeGame.turnCounter ++;
 
     // Allison plays bottom left
-    wholeGame.board.setMarker(2,0, wholeGame.currentPlayer.mark);
+    wholeGame.board.makeMove(2,0, wholeGame.currentPlayer.mark);
     wholeGame.togglePlayer();
     wholeGame.turnCounter ++;
 
@@ -106,7 +104,7 @@ describe('Game', function() {
       expect(wholeGame.playerTwo.mark).toEqual("O");
     });
     it('board has a winning state', function(){
-      expect(wholeGame.board.state).toEqual([["X", "O", null], ["X", "O", null], ["X", null, null]]);
+      expect(wholeGame.board.state).toEqual([["X", "O", " "], ["X", "O", " "], ["X", " ", " "]]);
       expect(wholeGame.board.checkWin()).toEqual(true);
     });
     it('now it is Player Two\'s turn', function() {

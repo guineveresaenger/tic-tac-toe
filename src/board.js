@@ -1,5 +1,5 @@
 var Board = function() {
-  this.state = [[null, null, null], [null, null, null], [null, null, null]];
+  this.state = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]];
 };
 
 Board.prototype.checkRows = function() {
@@ -7,7 +7,7 @@ Board.prototype.checkRows = function() {
     var checkMark = this.state[i][0];
     var counter = 0;
     for(var j = 0; j < this.state[i].length; j++) {
-      if (this.state[i][j] == checkMark && checkMark !== null){
+      if (this.state[i][j] == checkMark && checkMark !== " "){
         counter ++;
       }
     }
@@ -27,7 +27,7 @@ Board.prototype.checkColumns = function() {
     var checkMark = this.state[i][j];
     var counter = 0;
     while(i < this.state.length) {
-      if (this.state[i][j] == checkMark && checkMark !== null){
+      if (this.state[i][j] == checkMark && checkMark !== " "){
         counter++;
       }
       i++;
@@ -47,7 +47,7 @@ Board.prototype.checkDiags = function() {
   var checkMark = this.state[i][j];
   var counter = 0;
   while(i < this.state.length) {
-    if (this.state[i][j] == checkMark && checkMark !== null){
+    if (this.state[i][j] == checkMark && checkMark !== " "){
       counter++;
     }
     i++;
@@ -62,7 +62,7 @@ Board.prototype.checkDiags = function() {
   checkMark = this.state[i][j];
   counter = 0;
   while(i < this.state.length) {
-    if (this.state[i][j] == checkMark && checkMark !== null){
+    if (this.state[i][j] == checkMark && checkMark !== " "){
       counter++;
     }
     i++;
@@ -83,14 +83,14 @@ Board.prototype.checkWin = function() {
 };
 
 Board.prototype.isAvailable = function(i, j) {
-  if (this.state[i][j] === null) {
+  if (this.state[i][j] === " ") {
     return true;
   } else {
     return false;
   }
 };
 
-Board.prototype.setMarker = function(i, j, marker) {
+Board.prototype.makeMove = function(i, j, marker) {
   this.state[i][j] = marker;
 };
 
