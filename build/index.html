@@ -4,7 +4,22 @@
     <title>Tic-Tac-Toe</title>
     <meta charset="utf-8">
   </head>
-  <body>
+  <body id="game-site">
+    <section>
+      <button type="button" name="button" id="new-game-button"></button>
+    </section>
+    <main>
+      <ul id="game-board">
+
+      </ul>
+    </main>
+
+    <script type="text/template" id="tmpl-cell-rendering">
+      <li class="cell-rendering">
+        <h1><%- state %></h1>
+      </li>
+    </script>
+
     <script src="/app.bundle.js" charset="utf-8"></script>
   </body>
 </html>
