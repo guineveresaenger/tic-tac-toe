@@ -5,21 +5,22 @@ const CellView = Backbone.View.extend({
   initialize: function(options){
     this.row = options.row;
     this.column = options.column;
+    this.template = options.template;
     // this.state = options.state;
   },
 
   events: {
-    'click .game-cell': 'clicked'
+    'click .cell-rendering': 'clicked'
   },
 
   clicked: function(){
-    console.log("CLICKED");
     this.trigger('setState', this);
   },
 
   render: function() {
-    var html = "X";
+    var html = this.template();
     this.$el.html(html);
+    this.delegateEvents();
     return this;
   }
 });

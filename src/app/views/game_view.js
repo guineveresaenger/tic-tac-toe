@@ -8,24 +8,18 @@ import BoardView from 'app/views/board_view';
 
 const GameView = Backbone.View.extend({
   initialize: function() {
-    this.board = new BoardView();
+    this.board = new BoardView({
+      el: $('#game-board')
+    });
   },
 
   events: {
-    'click #new-game-button': 'createNewBoard',
-    'click .game-cell': 'saySomething'
-    //for testing purposes, get rid of
+    'click #new-game-button': 'createNewBoard'
   },
 
   createNewBoard: function() {
     console.log("New Board Created!");
-  },
-
-//for testing purposes, get rid of this
-  saySomething: function() {
-    console.log("SAYING SOMETHING");
   }
-
 });
 
 export default GameView;
