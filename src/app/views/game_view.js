@@ -12,11 +12,18 @@ const GameView = Backbone.View.extend({
   },
 
   events: {
-    'click #new-game-button': 'createNewBoard'
+    'click #new-game-button': 'createNewBoard',
+    'click .game-cell': 'saySomething'
+    //for testing purposes, get rid of
   },
 
   createNewBoard: function() {
     console.log("New Board Created!");
+  },
+
+//for testing purposes, get rid of this
+  saySomething: function() {
+    console.log("SAYING SOMETHING");
   }
 
 });

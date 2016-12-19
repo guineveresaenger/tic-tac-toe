@@ -12,7 +12,7 @@ const BoardView = Backbone.View.extend({
     this.cells = [];
 
     for(var i = 0; i < 3; i++) {
-      for(var j = 0; j < 3; i++) {
+      for(var j = 0; j < 3; j++) {
         var cell = new CellView({
           el: '.game-cell',
           row: i,
