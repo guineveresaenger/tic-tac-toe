@@ -3,16 +3,37 @@
   <head>
     <title>Tic-Tac-Toe</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
   </head>
   <body id="game-site">
     <header>
       <h1>Play Tic-Tac-Toe! Yay!</h1>
     </header>
     <section>
-      <button type="button" name="button" id="new-game-button"></button>
+      <button type="button" name="button" class="button" id="new-game-button">
+        New Game
+      </button>
     </section>
+    <section>
+      <ul id="players" class="row small-up-2">
+        <li class="column">Player 1</li>
+        <li class="column">Player 2</li>
+
+      </ul>
+    </section>
+
     <main>
-      <ul id="game-board">
+      <ul id="game-board" class="row small-up-3">
+        <li class="column"></li>
+        <li class="column"></li>
+        <li class="column"></li>
+        <li class="column"></li>
+        <li class="column"></li>
+        <li class="column"></li>
+        <li class="column"></li>
+        <li class="column"></li>
+        <li class="column"></li>
 
       </ul>
     </main>
