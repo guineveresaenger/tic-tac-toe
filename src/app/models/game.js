@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import Board from 'app/collections/board';
+import Board from 'app/models/board';
 import Player from 'app/models/player';
 
 const Game = Backbone.Model.extend ({
