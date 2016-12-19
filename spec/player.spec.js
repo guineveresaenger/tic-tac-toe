@@ -1,41 +1,45 @@
-import Player from 'player';
+import Player from 'app/models/player';
 
 describe('Player', function() {
-  var testPlayer = new Player();
+  var testPlayer;
+  beforeEach(function(){
+    testPlayer = new Player ({
+    });
+  });
   describe('initial attributes', function(){
     it ("should have a name attribute of `null` initially", function(){
-      expect(testPlayer.name).toEqual(null);
+      expect(testPlayer.get('name')).toEqual(null);
     });
     it ('should have a mark initally set to `null`', function() {
-      expect(testPlayer.mark).toEqual(null);
+      expect(testPlayer.get('mark')).toEqual(null);
     });
     it ('should have a turn attribute of false', function() {
-      expect(testPlayer.turn).toEqual(false);
+      expect(testPlayer.get('turn')).toEqual(false);
     });
   });
 
-  describe('setName', function() {
+  describe('setting the name', function() {
     it ('should set the name', function() {
-      testPlayer.setName("Allison");
-      expect(testPlayer.name).toEqual("Allison");
+      testPlayer.set({name: "Allison"});
+      expect(testPlayer.get('name')).toEqual("Allison");
     });
   });
 
-  describe('setMark', function() {
+  describe('setting the mark', function() {
     it ('should set the mark', function() {
-      testPlayer.setMark("X");
-      expect(testPlayer.mark).toEqual("X");
+      testPlayer.set({mark: "X"});
+      expect(testPlayer.get('mark')).toEqual("X");
     });
   });
 
   describe('toggle turn true/false', function() {
     it ('should set the turn to true', function() {
-      testPlayer.setTurnTrue();
-      expect(testPlayer.turn).toEqual(true);
+      testPlayer.set({turn: true});
+      expect(testPlayer.get('turn')).toEqual(true);
     });
     it ('should set the turn to false', function() {
-      testPlayer.setTurnFalse();
-      expect(testPlayer.turn).toEqual(false);
+      testPlayer.set({turn: false});
+      expect(testPlayer.get('turn')).toEqual(false);
     });
   });
 
