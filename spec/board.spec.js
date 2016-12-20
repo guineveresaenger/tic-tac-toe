@@ -4,6 +4,7 @@ describe('Board', function() {
   var testBoard;
   beforeEach(function() {
     testBoard = new Board({
+      state: [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
     });
   });
   describe('state of board initially', function(){
