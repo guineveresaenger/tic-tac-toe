@@ -28,8 +28,14 @@ const BoardView = Backbone.View.extend({
 
   },
 
-  setMarker: function() {
+  setMarker: function(cell) {
     console.log("MARKER SET");
+    console.log(this.model.get('state')[0]);
+
+    if(this.model.isAvailable(cell.row, cell.column)){
+      this.model.makeMove(cell.row, cell.column, "hello");
+    }
+    console.log(this.model.get('state') +"it mrked it hello");
   },
 
   render: function() {
