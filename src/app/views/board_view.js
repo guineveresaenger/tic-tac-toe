@@ -5,10 +5,12 @@ import CellView from 'app/views/cell_view';
 //import the Board collection??
 
 const BoardView = Backbone.View.extend({
-  initialize: function() {
-    console.log("Made a BoardView!!!");
+  initialize: function(options) {
+    // console.log("Made a BoardView!!!");
+    // this.playerOne = options.playerOne;
+    // console.log(this.playerOne.get('mark'));
 
-    this.listenTo(this.model, 'update', this.render);
+    this.listenTo(this.model.board, 'update', this.render);
 
     this.cells = [];
     this.cellTemplate = _.template($('#tmpl-cell-rendering').html());
@@ -18,7 +20,8 @@ const BoardView = Backbone.View.extend({
         var cell = new CellView({
           row: i,
           column: j,
-          template: this.cellTemplate
+          template: this.cellTemplate,
+          model: this.model
         });
         this.listenTo(cell, 'setState', this.setMarker);
         this.cells.push(cell);
@@ -30,12 +33,16 @@ const BoardView = Backbone.View.extend({
 
   setMarker: function(cell) {
     console.log("MARKER SET");
-    console.log(this.model.get('state')[0]);
-
-    if(this.model.isAvailable(cell.row, cell.column)){
-      this.model.makeMove(cell.row, cell.column, "hello");
+    console.log(this.model.board.get('state')[0]);
+    console.log("Turn:" + this.model.get('turnCounter'));
+    if(this.model.board.isAvailable(cell.row, cell.column)){
+      this.model.board.makeMove(cell.row, cell.column, this.model.currentPlayer.get('mark'));
+      this.model.togglePlayer();
+      this.model.set({turnCounter: this.model.get('turnCounter') + 1});
     }
-    console.log(this.model.get('state') +"it mrked it hello");
+    console.log(this.model.board.get('state') +"it marked it hello");
+    console.log(this.model.currentPlayer.get('mark'));
+
   },
 
   render: function() {

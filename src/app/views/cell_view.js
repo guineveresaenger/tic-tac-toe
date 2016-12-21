@@ -6,6 +6,8 @@ const CellView = Backbone.View.extend({
     this.row = options.row;
     this.column = options.column;
     this.template = options.template;
+
+
     // this.state = options.state;
   },
 

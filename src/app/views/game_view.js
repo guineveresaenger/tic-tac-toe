@@ -10,7 +10,7 @@ const GameView = Backbone.View.extend({
   initialize: function(options) {
     this.board = new BoardView({
       el: $('#game-board'),
-      model: options.model.board
+      model: options.model
     });
   },
 
@@ -20,7 +20,7 @@ const GameView = Backbone.View.extend({
 
   createNewBoard: function() {
     console.log("New Board Created!");
-    // make a new BoardView!
+    
   }
 });
 
