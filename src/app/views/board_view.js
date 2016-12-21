@@ -31,7 +31,6 @@ const BoardView = Backbone.View.extend({
     if(this.model.board.isAvailable(cell.row, cell.column) ){
       this.model.board.makeMove(cell.row, cell.column, this.model.currentPlayer.get('mark'));
       this.model.set({turnCounter: this.model.get('turnCounter') + 1});
-
     }
 
     console.log(this.model.board.get('state') +"it marked it hello");

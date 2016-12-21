@@ -12,7 +12,7 @@ ul {
 
 #game-board {
   background-color: beige;
-  margin: 15%;
+  /*margin: 15%;*/
 
 }
 
@@ -21,6 +21,11 @@ ul {
   border: 2px solid black;
   height: 180px;
   width: 180px;
+  padding: 0px;
+}
+
+#game-board div {
+  width: 176px;
 }
 
 #congratulations {

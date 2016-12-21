@@ -7,7 +7,7 @@ const CellView = Backbone.View.extend({
     this.column = options.column;
     this.template = options.template;
     this.mark = "";
-
+    this.$el.addClass("column");
 
     // this.state = options.state;
   },

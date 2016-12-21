@@ -23,12 +23,13 @@ const GameView = Backbone.View.extend({
 
   showWinModal: function(){
     console.log("this is a win modal");
+    console.log(this.board.model.get('turnCounter'));
     if (this.board.model.get('turnCounter') == 9){
       this.$('#congratulations').html(this.winTemplate({message: "This game was a tie."}));
     } else {
     this.$('#congratulations').html(this.winTemplate({message:"Yay, " + this.board.model.currentPlayer.get('name') + ", you won"}));
+    }
     this.$('#congratulations').show();
-  }
   },
 
   events: {
