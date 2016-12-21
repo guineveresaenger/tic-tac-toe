@@ -19,21 +19,24 @@
       <ul id="players" class="row small-up-2">
         <li class="column">Player 1</li>
         <li class="column">Player 2</li>
-
       </ul>
+
     </section>
 
     <main>
       <ul id="game-board" class="row small-up-3">
-
-
       </ul>
+      <section id="congratulations"></section>
     </main>
 
     <script type="text/template" id="tmpl-cell-rendering">
       <li class="column cell-rendering">
         <h1><%- mark %></h1>
       </li>
+    </script>
+
+    <script type="text/template" id="tmpl-win-modal">
+      <p><%- message %></p>
     </script>
 
     <script src="/app.bundle.js" charset="utf-8"></script>

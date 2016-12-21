@@ -6,12 +6,6 @@ import CellView from 'app/views/cell_view';
 
 const BoardView = Backbone.View.extend({
   initialize: function(options) {
-    // console.log("Made a BoardView!!!");
-    // this.playerOne = options.playerOne;
-    // console.log(this.playerOne.get('mark'));
-
-    this.listenTo(this.model.board, 'update', this.render);
-
     this.cells = [];
     this.cellTemplate = _.template($('#tmpl-cell-rendering').html());
 
@@ -32,20 +26,35 @@ const BoardView = Backbone.View.extend({
   },
 
   setMarker: function(cell) {
-    console.log("MARKER SET");
-    console.log(this.model.board.get('state')[0]);
+    console.log("MARKER SET FOR PLAYER" +this.model.currentPlayer.get('mark'));
     console.log("Turn:" + this.model.get('turnCounter'));
-    if(this.model.board.isAvailable(cell.row, cell.column)){
+    if(this.model.board.isAvailable(cell.row, cell.column) ){
       this.model.board.makeMove(cell.row, cell.column, this.model.currentPlayer.get('mark'));
-      this.model.togglePlayer();
       this.model.set({turnCounter: this.model.get('turnCounter') + 1});
+
     }
+
     console.log(this.model.board.get('state') +"it marked it hello");
-    console.log(this.model.currentPlayer.get('mark'));
+
+    // after the fifth play is made, we have possibility for a win
+    if (this.model.get('turnCounter') > 4) {
+      console.log("now checking for win");
+
+      if (this.model.board.checkWin()){
+        console.log("Yay, " + this.model.currentPlayer.get('name') + ", you won!");
+        this.trigger("win", this);
+      }
+    }
+
+    if ((this.model.get('turnCounter') == 9) && !this.model.board.checkWin()) {
+      console.log("we have a tie");
+      this.trigger("win", this);
+    }
 
   },
 
   render: function() {
+    this.$el.empty();
     this.cells.forEach(function(cell) {
       cell.render();
       this.$el.append(cell.$el);

@@ -4,12 +4,8 @@ import $ from 'jquery';
 
 $(document).ready(function() {
   console.log("******PLAYING!!*****");
-  var newGame = new Game();
-  newGame.setNames("Guinevere", "Allison");
-  newGame.setMarks();
+
   var currentGame = new GameView({
-    el: $('body'),
-    model: newGame
+    el: $('body')
   });
-  currentGame.render();
 });

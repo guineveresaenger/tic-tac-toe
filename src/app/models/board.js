@@ -1,9 +1,10 @@
 import Backbone from 'backbone';
 
 const Board = Backbone.Model.extend({
-  defaults: {
-    state: [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+  initialize: function() {
+    this.set({'state': [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]});
   },
+
   checkRows: function() {
     for(var i = 0; i < this.get('state').length; i++) {
       var checkMark = this.get('state')[i][0];

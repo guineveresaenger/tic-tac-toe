@@ -22,3 +22,18 @@ ul {
   height: 180px;
   width: 180px;
 }
+
+#congratulations {
+  display: none;
+  /*z-index: 10;*/
+  position: fixed;
+  width: 70%;
+  height: 70%;
+  top: 30%;
+  /*left: 30%;*/
+  background-color: pink;
+  text-align: center;
+  padding-top: 40px;
+  border: 1em solid black;
+
+}
