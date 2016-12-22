@@ -7,11 +7,26 @@ const Game = Backbone.Model.extend({
     turnCounter: 0,
 
   },
+  urlRoot: 'http://localhost:3000/api/v1/games',
+
   initialize: function(options) {
     this.board = new Board();
     this.playerOne = new Player();
     this.playerTwo = new Player();
     this.currentPlayer = this.playerOne;
+  },
+
+  toJSON: function(){
+    //post data to API
+    var gameData = {
+    "board": [].concat.apply([], this.board.get('state')),
+    "players": [
+      this.playerOne.get('name'),
+      this.playerTwo.get('name'),
+    ],
+    "outcome": this.currentPlayer.get('mark')
+    };
+    return gameData;
   },
   togglePlayer: function() {
     if (this.currentPlayer == this.playerOne) {

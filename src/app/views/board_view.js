@@ -2,7 +2,6 @@ import Backbone from 'backbone';
 import $ from 'jquery';
 import _ from 'underscore';
 import CellView from 'app/views/cell_view';
-//import the Board collection??
 
 const BoardView = Backbone.View.extend({
   initialize: function(options) {
@@ -26,27 +25,18 @@ const BoardView = Backbone.View.extend({
   },
 
   setMarker: function(cell) {
-    console.log("MARKER SET FOR PLAYER" +this.model.currentPlayer.get('mark'));
-    console.log("Turn:" + this.model.get('turnCounter'));
     if(this.model.board.isAvailable(cell.row, cell.column) ){
       this.model.board.makeMove(cell.row, cell.column, this.model.currentPlayer.get('mark'));
       this.model.set({turnCounter: this.model.get('turnCounter') + 1});
     }
-
     console.log(this.model.board.get('state') +"it marked it hello");
 
     // after the fifth play is made, we have possibility for a win
-    if (this.model.get('turnCounter') > 4) {
-      console.log("now checking for win");
-
-      if (this.model.board.checkWin()){
-        console.log("Yay, " + this.model.currentPlayer.get('name') + ", you won!");
+    if ((this.model.get('turnCounter') > 4) && this.model.board.checkWin()) {
         this.trigger("win", this);
-      }
     }
 
     if ((this.model.get('turnCounter') == 9) && !this.model.board.checkWin()) {
-      console.log("we have a tie");
       this.trigger("win", this);
     }
 

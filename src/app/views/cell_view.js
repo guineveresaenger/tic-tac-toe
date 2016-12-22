@@ -8,8 +8,6 @@ const CellView = Backbone.View.extend({
     this.template = options.template;
     this.mark = "";
     this.$el.addClass("column");
-
-    // this.state = options.state;
   },
 
   events: {
@@ -17,16 +15,17 @@ const CellView = Backbone.View.extend({
   },
 
   clicked: function(){
-    if (!this.model.board.checkWin()){
-    this.trigger('setState', this);
+    if (!this.model.board.checkWin() && this.model.board.isAvailable(this.row, this.column)){
 
-    this.mark = this.model.currentPlayer.get('mark');
-    console.log("set mark to " + this.mark);
-    this.render();
-    this.model.togglePlayer();
-  } else {
-    this.mark = '';
-  }
+      this.trigger('setState', this);
+      this.mark = this.model.currentPlayer.get('mark');
+
+      this.render();
+      this.model.togglePlayer();
+    }
+    else {
+      this.mark = '';
+    }
   },
 
   render: function() {

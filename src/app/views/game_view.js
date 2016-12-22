@@ -18,20 +18,22 @@ const GameView = Backbone.View.extend({
     });
     this.listenTo(this.board, 'win', this.showWinModal);
     this.winTemplate = _.template($('#tmpl-win-modal').html());
-
+    this.render();
   },
 
   showWinModal: function(){
-    console.log("this is a win modal");
-    console.log(this.board.model.get('turnCounter'));
     if (this.board.model.get('turnCounter') == 9){
       this.$('#congratulations').html(this.winTemplate({message: "This game was a tie."}));
-    } else {
-    this.$('#congratulations').html(this.winTemplate({message:"Yay, " + this.board.model.currentPlayer.get('name') + ", you won"}));
+    }
+    else
+    {
+    this.$('#congratulations').html(this.winTemplate({message:"Yay, " + this.board.model.currentPlayer.get('name') + ", you won!!!"}));
     }
     this.$('#congratulations').show();
-  },
 
+    this.board.model.save();
+
+  },
   events: {
     'click #new-game-button': 'createNewBoard'
   },
@@ -47,8 +49,19 @@ const GameView = Backbone.View.extend({
     this.listenTo(this.board, 'win', this.showWinModal);
     this.winTemplate = _.template($('#tmpl-win-modal').html());
     this.$('#congratulations').hide();
+  },
 
-    console.log("New Board Created!");
+  render: function(){
+    console.log("rendering game view");
+    this.model.fetch().done(function(gameData){
+      gameData.forEach(function(game){
+        console.log(game);
+        var gameInfo = "<p>" + game.id + ": " + "Played by " + game.players[0] + " and " + game.players[1] + " at " + game.played_at + "</p>";
+        $('#game-history').append(gameInfo);
+      });
+
+    });
+
   }
 });
 

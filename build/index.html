@@ -10,15 +10,11 @@
     <header>
       <h1>Play Tic-Tac-Toe! Yay!</h1>
     </header>
-    <section>
-      <button type="button" name="button" class="button" id="new-game-button">
-        New Game
-      </button>
-    </section>
+
     <section>
       <ul id="players" class="row small-up-2">
-        <li class="column">Player 1</li>
-        <li class="column">Player 2</li>
+        <li class="column">Player 1: X</li>
+        <li class="column">Player 2: O</li>
       </ul>
 
     </section>
@@ -29,6 +25,10 @@
       <section id="congratulations"></section>
     </main>
 
+    <section id="game-history">
+      <h2>Games Played:</h2>
+    </section>
+
     <script type="text/template" id="tmpl-cell-rendering">
       <li class="cell-rendering">
         <h1><%- mark %></h1>
@@ -36,7 +36,10 @@
     </script>
 
     <script type="text/template" id="tmpl-win-modal">
-      <p><%- message %></p>
+      <p><h3><%- message %></h3></p>
+      <button type="button" name="button" class="button success" id="new-game-button">
+        New Game
+      </button>
     </script>
 
     <script src="/app.bundle.js" charset="utf-8"></script>
