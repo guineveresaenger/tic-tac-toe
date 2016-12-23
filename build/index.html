@@ -24,9 +24,11 @@
       </ul>
       <section id="congratulations"></section>
     </main>
-
+    <button type="button" name="button" class="button secondary" id="show-games-button">
+      Show All Games
+    </button>
     <section id="game-history">
-      <h2>Games Played:</h2>
+
     </section>
 
     <script type="text/template" id="tmpl-cell-rendering">
@@ -37,7 +39,7 @@
 
     <script type="text/template" id="tmpl-win-modal">
       <p><h3><%- message %></h3></p>
-      <button type="button" name="button" class="button success" id="new-game-button">
+      <button type="button" name="button" class="button secondary" id="new-game-button">
         New Game
       </button>
     </script>

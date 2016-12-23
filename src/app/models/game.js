@@ -18,13 +18,21 @@ const Game = Backbone.Model.extend({
 
   toJSON: function(){
     //post data to API
+    var outcome;
+    if(this.board.checkWin()){
+      outcome = this.currentPlayer.get('mark');
+    }
+    else {
+      console.log("this should be a tie");
+      outcome = "draw";
+    }
     var gameData = {
     "board": [].concat.apply([], this.board.get('state')),
     "players": [
       this.playerOne.get('name'),
       this.playerTwo.get('name'),
     ],
-    "outcome": this.currentPlayer.get('mark')
+    "outcome": outcome
     };
     return gameData;
   },

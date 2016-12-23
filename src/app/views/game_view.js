@@ -35,7 +35,8 @@ const GameView = Backbone.View.extend({
 
   },
   events: {
-    'click #new-game-button': 'createNewBoard'
+    'click #new-game-button': 'createNewBoard',
+    'click #show-games-button': 'showGameHistory'
   },
 
   createNewBoard: function() {
@@ -51,18 +52,19 @@ const GameView = Backbone.View.extend({
     this.$('#congratulations').hide();
   },
 
-  render: function(){
-    console.log("rendering game view");
+  showGameHistory: function(){
+    $('#game-history').empty();
     this.model.fetch().done(function(gameData){
       gameData.forEach(function(game){
-        console.log(game);
-        var gameInfo = "<p>" + game.id + ": " + "Played by " + game.players[0] + " and " + game.players[1] + " at " + game.played_at + "</p>";
+        var gameInfo = "<p>" + game.id + ": " + "Played by " + game.players[0] + " and " + game.players[1] + " at " + game.played_at + "; outcome: " + game.outcome + "</p>";
         $('#game-history').append(gameInfo);
       });
 
     });
 
-  }
+  },
+
+
 });
 
 export default GameView;
