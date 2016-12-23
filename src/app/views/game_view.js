@@ -18,6 +18,7 @@ const GameView = Backbone.View.extend({
     });
     this.listenTo(this.board, 'win', this.showWinModal);
     this.winTemplate = _.template($('#tmpl-win-modal').html());
+
     this.render();
   },
 
@@ -51,6 +52,7 @@ const GameView = Backbone.View.extend({
     this.listenTo(this.board, 'win', this.showWinModal);
     this.winTemplate = _.template($('#tmpl-win-modal').html());
     this.$('#congratulations').hide();
+    $('#game-history').empty();
   },
 
   showGameHistory: function(){
