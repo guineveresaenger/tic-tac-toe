@@ -32,6 +32,7 @@ const GameView = Backbone.View.extend({
     this.$('#congratulations').show();
 
     this.board.model.save();
+    this.showGameHistory();
 
   },
   events: {
